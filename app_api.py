@@ -37,6 +37,20 @@ class PredictionInput(BaseModel):
     Age: float
     Fare: float
 
+@app.get("/info")
+def info():
+    return {
+        "name": "Titanic Survival Prediction API",
+        "version": "1.0.0",
+        "description": "API для предсказания выживания пассажиров Титаника на основе ML-модели.",
+        "endpoints": {
+            "GET /info": "Описание API",
+            "GET /health": "Проверка работоспособности сервиса",
+            "GET /stats": "Количество сделанных запросов к /predict_model",
+            "POST /predict_model": "Предсказание выживания по параметрам: Pclass, Age, Fare"
+        }
+    }
+
 @app.get("/stats")
 def stats():
     return {"request_count": request_count}
